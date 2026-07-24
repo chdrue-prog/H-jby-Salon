@@ -1,7 +1,10 @@
 import React from 'react';
 import { Phone, Clock, MapPin, Navigation, HelpCircle } from 'lucide-react';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 export default function Contact() {
+  useScrollReveal();
+
   const faqs = [
     {
       q: 'Skal man bestille tid i forvejen?',
@@ -25,10 +28,10 @@ export default function Contact() {
     <div>
       {/* Header */}
       <section style={{ backgroundColor: 'var(--bg-dark)', color: '#FFFFFF', padding: '4.5rem 0 3.5rem', textAlign: 'center' }}>
-        <div className="container">
+        <div className="container animate-fade-in">
           <span className="badge badge-dark mb-2">Kontakt & Find Os</span>
           <h1 style={{ fontSize: '3.5rem', color: '#FFFFFF', marginBottom: '1rem' }}>Kontakt Højby Salon</h1>
-          <p style={{ fontSize: '1.15rem', color: '#D6D3D1', maxWidth: '650px', margin: '0 auto' }}>
+          <p style={{ fontSize: '1.15rem', color: '#D3D7DC', maxWidth: '650px', margin: '0 auto' }}>
             Vi glæder os til at høre fra dig eller byde dig velkommen i salonen på Svendborgvej.
           </p>
         </div>
@@ -37,10 +40,10 @@ export default function Contact() {
       {/* Main Call Banner */}
       <section style={{ marginTop: '-2rem', marginBottom: '3.5rem', position: 'relative', zIndex: 10 }}>
         <div className="container">
-          <div className="dark-card text-center" style={{ background: 'linear-gradient(135deg, #2D3238 0%, #1C2024 100%)', border: '2px solid var(--accent-gold)', padding: '3rem 2rem', boxShadow: 'var(--shadow-md)' }}>
+          <div className="dark-card text-center reveal" style={{ background: 'linear-gradient(135deg, #2D3238 0%, #1C2024 100%)', border: '2px solid var(--accent-gold)', padding: '3rem 2rem', boxShadow: 'var(--shadow-md)' }}>
             <span className="badge badge-dark mb-2">Direkte Opkald</span>
             <h2 style={{ fontSize: '2.5rem', color: '#FFFFFF', marginBottom: '0.75rem' }}>Ring for Tidsbestilling</h2>
-            <p style={{ fontSize: '1.1rem', color: '#D6D3D1', maxWidth: '600px', margin: '0 auto 1.75rem' }}>
+            <p style={{ fontSize: '1.1rem', color: '#D3D7DC', maxWidth: '600px', margin: '0 auto 1.75rem' }}>
               Vi har ingen online booking-formular. Ring direkte til os på telefonen — det er hurtigt, nemt og personligt.
             </p>
             
@@ -57,7 +60,7 @@ export default function Contact() {
         <div className="container">
           <div className="grid-2" style={{ gap: '2rem' }}>
             {/* Opening Hours Card */}
-            <div className="glass-card">
+            <div className="glass-card reveal delay-1">
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                 <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'var(--bg-dark)', color: 'var(--accent-gold)', display: 'flex', alignItems: 'center', justifyCenter: 'center' }}>
                   <Clock size={24} style={{ margin: 'auto' }} />
@@ -86,7 +89,7 @@ export default function Contact() {
             </div>
 
             {/* Location & Address Card */}
-            <div className="glass-card">
+            <div className="glass-card reveal delay-2">
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                 <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'var(--bg-dark)', color: 'var(--accent-gold)', display: 'flex', alignItems: 'center', justifyCenter: 'center' }}>
                   <MapPin size={24} style={{ margin: 'auto' }} />
@@ -128,12 +131,12 @@ export default function Contact() {
       {/* Embedded Map Section */}
       <section className="section" style={{ backgroundColor: 'var(--bg-card)', padding: '3.5rem 0' }}>
         <div className="container">
-          <div className="text-center" style={{ maxWidth: '640px', margin: '0 auto 2.5rem' }}>
+          <div className="text-center reveal" style={{ maxWidth: '640px', margin: '0 auto 2.5rem' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Placering på Svendborgvej 321</h2>
             <p style={{ color: 'var(--text-muted)' }}>Nem adgang og gratis parkering foran salonen i 5260 Odense (Højby)</p>
           </div>
 
-          <div style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: 'var(--shadow-md)', border: '1px solid var(--accent-border)', height: '400px' }}>
+          <div className="reveal delay-1" style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: 'var(--shadow-md)', border: '1px solid var(--accent-border)', height: '400px' }}>
             <iframe 
               title="Højby Salon Svendborgvej 321 Odense"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2268.5!2d10.435!3d55.335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464ce00000000000%3A0x0!2zU3ZlbmRib3JndmVqIDMyMSwgNTI2MCBPZGVuc2U!5e0!3m2!1sda!2sdk!4v1700000000000!5m2!1sda!2sdk" 
@@ -151,7 +154,7 @@ export default function Contact() {
       {/* FAQ Section */}
       <section className="section">
         <div className="container" style={{ maxWidth: '850px' }}>
-          <div className="text-center" style={{ marginBottom: '3rem' }}>
+          <div className="text-center reveal" style={{ marginBottom: '3rem' }}>
             <span className="badge mb-2">Spørgsmål & Svar</span>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>Ofte Stillede Spørgsmål</h2>
             <p style={{ color: 'var(--text-muted)' }}>Har du spørgsmål inden dit besøg?</p>
@@ -159,7 +162,7 @@ export default function Contact() {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             {faqs.map((faq, idx) => (
-              <div key={idx} className="glass-card">
+              <div key={idx} className={`glass-card reveal delay-${(idx % 2) + 1}`}>
                 <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                   <HelpCircle size={20} style={{ color: 'var(--accent-gold)' }} />
                   <span>{faq.q}</span>

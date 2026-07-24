@@ -1,15 +1,18 @@
 import React from 'react';
 import { Phone, Award, Heart, Shield, Sparkles, Users } from 'lucide-react';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 import exteriorImg from '../assets/images/exterior.jpg';
 import interiorImg from '../assets/images/interior.jpg';
 
 export default function About({ setActivePage }) {
+  useScrollReveal();
+
   return (
     <div>
       {/* Header Banner */}
       <section style={{ backgroundColor: 'var(--bg-dark)', color: '#FFFFFF', padding: '4.5rem 0 3.5rem', textAlign: 'center' }}>
-        <div className="container">
+        <div className="container animate-fade-in">
           <span className="badge badge-dark mb-2">Historie & Filosofi</span>
           <h1 style={{ fontSize: '3.5rem', color: '#FFFFFF', marginBottom: '1rem' }}>Om Højby Salon</h1>
           <p style={{ fontSize: '1.15rem', color: '#D3D7DC', maxWidth: '650px', margin: '0 auto' }}>
@@ -22,7 +25,7 @@ export default function About({ setActivePage }) {
       <section className="section">
         <div className="container">
           <div className="grid-2" style={{ alignItems: 'center', gap: '3.5rem' }}>
-            <div>
+            <div className="reveal">
               <span className="badge mb-2">Vores Filosofi</span>
               <h2 style={{ fontSize: '2.5rem', marginBottom: '1.25rem' }}>
                 Skabt for dig der værdsætter en ordentlig klipning
@@ -45,10 +48,12 @@ export default function About({ setActivePage }) {
               </div>
             </div>
 
-            <div>
+            <div className="reveal delay-2">
               <img 
                 src={interiorImg} 
                 alt="Højby Salon Interiør" 
+                loading="lazy"
+                decoding="async"
                 style={{ width: '100%', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-md)' }} 
               />
             </div>
@@ -60,14 +65,16 @@ export default function About({ setActivePage }) {
       <section className="section" style={{ backgroundColor: 'var(--bg-card)' }}>
         <div className="container">
           <div className="grid-2" style={{ alignItems: 'center', gap: '3.5rem' }}>
-            <div>
+            <div className="reveal">
               <img 
                 src={exteriorImg} 
                 alt="Højby Salon Facade & Skilte" 
+                loading="lazy"
+                decoding="async"
                 style={{ width: '100%', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-md)' }} 
               />
             </div>
-            <div>
+            <div className="reveal delay-2">
               <span className="badge mb-2">Centralt i Højby</span>
               <h2 style={{ fontSize: '2.5rem', marginBottom: '1.25rem' }}>
                 Gode parkeringsforhold & nem adgang
@@ -91,7 +98,7 @@ export default function About({ setActivePage }) {
 
       {/* Direct Call Banner */}
       <section className="section text-center">
-        <div className="container">
+        <div className="container reveal">
           <div className="glass-card" style={{ padding: '3.5rem 2rem', background: 'var(--bg-dark)', color: '#FFFFFF' }}>
             <h2 style={{ fontSize: '2.5rem', color: '#FFFFFF', marginBottom: '1rem' }}>Vil du booke en tid hos os?</h2>
             <p style={{ color: '#D3D7DC', fontSize: '1.1rem', marginBottom: '2rem', maxWidth: '600px', margin: '0 auto 2rem' }}>

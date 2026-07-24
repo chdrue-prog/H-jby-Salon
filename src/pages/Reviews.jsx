@@ -1,7 +1,10 @@
 import React from 'react';
-import { Star, Phone, ThumbsUp, Heart, CheckCircle } from 'lucide-react';
+import { Star, Phone, ThumbsUp } from 'lucide-react';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 export default function Reviews() {
+  useScrollReveal();
+
   const reviews = [
     {
       name: 'Michael Poulsen',
@@ -14,7 +17,7 @@ export default function Reviews() {
       name: 'Jens Erik M.',
       date: 'For 1 måned siden',
       rating: 5,
-      text: 'Super dygtig frisør. Jeg er kommet her i lang tid til både pensionistklip og skægtrimning. De tager sig altid god tid til kunden.',
+      text: 'Super dygtig frisør. Jeg er kommet her i lang tid til både pensionistklip og skægtrimning på Svendborgvej. De tager sig altid god tid til kunden.',
       tag: 'Pensionistklip & Skæg'
     },
     {
@@ -35,7 +38,7 @@ export default function Reviews() {
       name: 'Rasmus H.',
       date: 'For nylig',
       rating: 5,
-      text: 'Dejligt befriende at man bare kan ringe eller svinge forbi uden et kompliceret bookingsystem på nettet. Altid god service!',
+      text: 'Dejligt befriende at man bare kan ringe direkte på 20 18 89 03 eller svinge forbi uden et kompliceret bookingsystem på nettet. Altid god service!',
       tag: 'Drop-in & Tlf booking'
     }
   ];
@@ -43,20 +46,20 @@ export default function Reviews() {
   return (
     <div>
       {/* Header */}
-      <section style={{ backgroundColor: 'var(--bg-dark)', color: '#FFFFFF', padding: '5rem 0 4rem', textAlign: 'center' }}>
-        <div className="container">
+      <section style={{ backgroundColor: 'var(--bg-dark)', color: '#FFFFFF', padding: '4.5rem 0 3.5rem', textAlign: 'center' }}>
+        <div className="container animate-fade-in">
           <span className="badge badge-dark mb-2">Kundeudtalelser</span>
           <h1 style={{ fontSize: '3.5rem', color: '#FFFFFF', marginBottom: '1rem' }}>Anmeldelser</h1>
-          <p style={{ fontSize: '1.2rem', color: '#D6D3D1', maxWidth: '650px', margin: '0 auto' }}>
+          <p style={{ fontSize: '1.15rem', color: '#D3D7DC', maxWidth: '650px', margin: '0 auto' }}>
             Se hvad vores kunder siger om atmosfæren, betjeningen og kvaliteten i Højby Salon.
           </p>
         </div>
       </section>
 
       {/* Score Rating Card */}
-      <section style={{ backgroundColor: 'var(--bg-card)', padding: '3rem 0', borderBottom: '1px solid var(--accent-border)' }}>
+      <section style={{ backgroundColor: 'var(--bg-card)', padding: '2.5rem 0', borderBottom: '1px solid var(--accent-border)' }}>
         <div className="container">
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around', flexWrap: 'wrap', gap: '2rem' }}>
+          <div className="reveal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around', flexWrap: 'wrap', gap: '2rem' }}>
             <div className="text-center">
               <div style={{ fontSize: '3.5rem', fontFamily: 'var(--font-serif)', fontWeight: 700, color: 'var(--accent-gold)' }}>4.9 / 5.0</div>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '0.25rem', color: '#F59E0B', margin: '0.5rem 0' }}>
@@ -66,8 +69,6 @@ export default function Reviews() {
               </div>
               <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Baseret på kundetilbagemeldinger</div>
             </div>
-
-            <div style={{ height: '60px', width: '1px', background: 'var(--accent-border)', display: 'none' }} className="desktop-divider" />
 
             <div style={{ maxWidth: '450px' }}>
               <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Glade kunder er vores bedste anbefaling</h3>
@@ -84,7 +85,7 @@ export default function Reviews() {
         <div className="container">
           <div className="grid-2" style={{ gap: '2rem' }}>
             {reviews.map((r, idx) => (
-              <div key={idx} className="glass-card">
+              <div key={idx} className={`glass-card reveal delay-${(idx % 2) + 1}`}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
                   <div>
                     <h3 style={{ fontSize: '1.25rem', marginBottom: '0.25rem' }}>{r.name}</h3>
@@ -110,9 +111,9 @@ export default function Reviews() {
 
       {/* CTA */}
       <section className="section section-dark text-center">
-        <div className="container">
+        <div className="container reveal">
           <h2 style={{ fontSize: '2.75rem', color: '#FFFFFF', marginBottom: '1rem' }}>Bliv vores næste tilfredse kunde</h2>
-          <p style={{ color: '#D6D3D1', fontSize: '1.1rem', marginBottom: '2rem' }}>Ring på 20 18 89 03 og få en god oplevelse i frisørstolen.</p>
+          <p style={{ color: '#D3D7DC', fontSize: '1.1rem', marginBottom: '2rem' }}>Ring på 20 18 89 03 og få en god oplevelse i frisørstolen.</p>
           <a href="tel:+4520188903" className="btn btn-primary btn-lg btn-call-pulse">
             <Phone size={22} />
             <span>RING OG BOOK TID PÅ 20 18 89 03</span>

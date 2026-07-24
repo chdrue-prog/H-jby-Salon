@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Phone, Eye, Scissors, MapPin } from 'lucide-react';
+import { Phone, Eye } from 'lucide-react';
 import Lightbox from '../components/Lightbox';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 import exteriorImg from '../assets/images/exterior.jpg';
 import interiorImg from '../assets/images/interior.jpg';
 
 export default function Gallery() {
+  useScrollReveal();
   const [selectedImage, setSelectedImage] = useState(null);
 
   const galleryItems = [
@@ -43,10 +45,10 @@ export default function Gallery() {
     <div>
       {/* Header */}
       <section style={{ backgroundColor: 'var(--bg-dark)', color: '#FFFFFF', padding: '4.5rem 0 3.5rem', textAlign: 'center' }}>
-        <div className="container">
+        <div className="container animate-fade-in">
           <span className="badge badge-dark mb-2">Billedgalleri</span>
           <h1 style={{ fontSize: '3.5rem', color: '#FFFFFF', marginBottom: '1rem' }}>Billeder af Højby Salon</h1>
-          <p style={{ fontSize: '1.15rem', color: '#D6D3D1', maxWidth: '650px', margin: '0 auto' }}>
+          <p style={{ fontSize: '1.15rem', color: '#D3D7DC', maxWidth: '650px', margin: '0 auto' }}>
             Se vores salon både udefra og indendørs på Svendborgvej 321, 5260 Odense. Klik på et billede for at forstørre det.
           </p>
         </div>
@@ -56,10 +58,10 @@ export default function Gallery() {
       <section className="section">
         <div className="container">
           <div className="grid-2" style={{ gap: '2rem' }}>
-            {galleryItems.map((item) => (
+            {galleryItems.map((item, idx) => (
               <div 
                 key={item.id} 
-                className="glass-card" 
+                className={`glass-card reveal delay-${(idx % 2) + 1}`} 
                 style={{ padding: '0', overflow: 'hidden', cursor: 'pointer' }}
                 onClick={() => setSelectedImage(item)}
               >
@@ -67,6 +69,8 @@ export default function Gallery() {
                   <img 
                     src={item.url} 
                     alt={item.title} 
+                    loading="lazy"
+                    decoding="async"
                     style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.4s ease' }} 
                   />
                   <div 
@@ -105,7 +109,7 @@ export default function Gallery() {
 
       {/* CTA */}
       <section className="section section-dark text-center">
-        <div className="container">
+        <div className="container reveal">
           <h2 style={{ fontSize: '2.75rem', color: '#FFFFFF', marginBottom: '1rem' }}>Besøg Højby Salon</h2>
           <p style={{ color: '#D3D7DC', fontSize: '1.1rem', marginBottom: '2rem' }}>
             Svendborgvej 321, 5260 Odense (Højby) — Ring på 20 18 89 03 eller kom forbi i åbningstiden.

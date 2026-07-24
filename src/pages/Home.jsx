@@ -1,10 +1,13 @@
 import React from 'react';
 import { Phone, Clock, Shield, Star, Scissors, CheckCircle, ArrowRight, Sparkles, MapPin } from 'lucide-react';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 import heroImg from '../assets/images/hero.jpg';
 import interiorImg from '../assets/images/interior.jpg';
 
 export default function Home({ setActivePage }) {
+  useScrollReveal();
+
   const popularServices = [
     { title: 'Herreklip', price: '200,- kr.', desc: 'Klassisk eller moderne herreklip tilpasset din stil inklusive vask & let styling.' },
     { title: 'Børneklip', price: '150,- kr.', desc: 'Tålmodig og venlig klipning til børn i trygge og hyggelige rammer.' },
@@ -23,7 +26,7 @@ export default function Home({ setActivePage }) {
       {/* Warm Salon Interior Hero Section */}
       <section className="hero-wrapper">
         <div className="hero-bg">
-          <img src={heroImg} alt="Højby Salon Interiør Stemning" />
+          <img src={heroImg} alt="Højby Salon Interiør Stemning" decoding="async" />
         </div>
         <div className="hero-overlay"></div>
 
@@ -78,7 +81,7 @@ export default function Home({ setActivePage }) {
       <section style={{ backgroundColor: 'var(--bg-card)', borderBottom: '1px solid var(--accent-border)', padding: '1.75rem 0' }}>
         <div className="container">
           <div className="grid-4" style={{ alignItems: 'center' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <div className="reveal delay-1" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <div style={{ width: '46px', height: '46px', borderRadius: '50%', background: 'rgba(192,138,62,0.15)', display: 'flex', alignItems: 'center', justifyCenter: 'center', color: 'var(--accent-gold)' }}>
                 <Phone size={22} style={{ margin: 'auto' }} />
               </div>
@@ -88,7 +91,7 @@ export default function Home({ setActivePage }) {
               </div>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <div className="reveal delay-2" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <div style={{ width: '46px', height: '46px', borderRadius: '50%', background: 'rgba(192,138,62,0.15)', display: 'flex', alignItems: 'center', justifyCenter: 'center', color: 'var(--accent-gold)' }}>
                 <MapPin size={22} style={{ margin: 'auto' }} />
               </div>
@@ -98,7 +101,7 @@ export default function Home({ setActivePage }) {
               </div>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <div className="reveal delay-3" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <div style={{ width: '46px', height: '46px', borderRadius: '50%', background: 'rgba(192,138,62,0.15)', display: 'flex', alignItems: 'center', justifyCenter: 'center', color: 'var(--accent-gold)' }}>
                 <Clock size={22} style={{ margin: 'auto' }} />
               </div>
@@ -108,7 +111,7 @@ export default function Home({ setActivePage }) {
               </div>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <div className="reveal delay-4" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <div style={{ width: '46px', height: '46px', borderRadius: '50%', background: 'rgba(192,138,62,0.15)', display: 'flex', alignItems: 'center', justifyCenter: 'center', color: 'var(--accent-gold)' }}>
                 <Shield size={22} style={{ margin: 'auto' }} />
               </div>
@@ -125,7 +128,7 @@ export default function Home({ setActivePage }) {
       <section className="section">
         <div className="container">
           <div className="grid-2" style={{ alignItems: 'center', gap: '3.5rem' }}>
-            <div>
+            <div className="reveal">
               <span className="badge mb-2">Velkommen i Salonen</span>
               <h2 style={{ fontSize: '2.5rem', marginBottom: '1.25rem' }}>
                 En hyggelig frisørsalon med sans for god betjening
@@ -163,10 +166,12 @@ export default function Home({ setActivePage }) {
               </div>
             </div>
 
-            <div>
+            <div className="reveal delay-2">
               <img 
                 src={interiorImg} 
                 alt="Højby Salon Interiør på Svendborgvej 321" 
+                loading="lazy"
+                decoding="async"
                 style={{ width: '100%', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-md)' }} 
               />
             </div>
@@ -177,7 +182,7 @@ export default function Home({ setActivePage }) {
       {/* Services Highlight */}
       <section className="section" style={{ backgroundColor: 'var(--bg-card)' }}>
         <div className="container">
-          <div className="text-center" style={{ maxWidth: '640px', margin: '0 auto 3.5rem' }}>
+          <div className="text-center reveal" style={{ maxWidth: '640px', margin: '0 auto 3.5rem' }}>
             <span className="badge mb-2">Vores Ydelser</span>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '0.85rem' }}>Gennemskuelige priser</h2>
             <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>
@@ -187,7 +192,7 @@ export default function Home({ setActivePage }) {
 
           <div className="grid-2" style={{ gap: '1.5rem' }}>
             {popularServices.map((service, idx) => (
-              <div key={idx} className="price-card">
+              <div key={idx} className={`price-card reveal delay-${idx + 1}`}>
                 <div>
                   <div className="price-card-header">
                     <h3 className="price-card-title">{service.title}</h3>
@@ -208,7 +213,7 @@ export default function Home({ setActivePage }) {
             ))}
           </div>
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-8 reveal">
             <button 
               onClick={() => { setActivePage('services'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} 
               className="btn btn-dark btn-lg"
@@ -223,7 +228,7 @@ export default function Home({ setActivePage }) {
       {/* Customer Reviews Highlight */}
       <section className="section">
         <div className="container">
-          <div className="text-center" style={{ maxWidth: '640px', margin: '0 auto 3.5rem' }}>
+          <div className="text-center reveal" style={{ maxWidth: '640px', margin: '0 auto 3.5rem' }}>
             <span className="badge mb-2">Anmeldelser</span>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '0.85rem' }}>Det siger vores kunder</h2>
             <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>
@@ -233,7 +238,7 @@ export default function Home({ setActivePage }) {
 
           <div className="grid-3">
             {testimonials.map((t, idx) => (
-              <div key={idx} className="glass-card">
+              <div key={idx} className={`glass-card reveal delay-${idx + 1}`}>
                 <div style={{ display: 'flex', gap: '0.25rem', color: '#F59E0B', marginBottom: '1rem' }}>
                   {[...Array(t.rating)].map((_, i) => (
                     <Star key={i} size={18} fill="#F59E0B" />
@@ -254,7 +259,7 @@ export default function Home({ setActivePage }) {
 
       {/* Direct Call CTA Banner */}
       <section className="section section-dark text-center" style={{ position: 'relative', overflow: 'hidden' }}>
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+        <div className="container reveal" style={{ position: 'relative', zIndex: 2 }}>
           <span className="badge badge-dark mb-4">Ring For Tidsbestilling</span>
           <h2 style={{ fontSize: '2.75rem', color: '#FFFFFF', marginBottom: '1rem' }}>
             Klar til at blive klippede?
