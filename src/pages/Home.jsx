@@ -1,6 +1,9 @@
 import React from 'react';
 import { Phone, Clock, Shield, Star, Scissors, CheckCircle, ArrowRight, Sparkles, MapPin } from 'lucide-react';
 
+import heroImg from '../assets/images/hero.jpg';
+import interiorImg from '../assets/images/interior.jpg';
+
 export default function Home({ setActivePage }) {
   const popularServices = [
     { title: 'Herreklip', price: '200,- kr.', desc: 'Klassisk eller moderne herreklip tilpasset din stil inklusive vask & let styling.' },
@@ -20,7 +23,7 @@ export default function Home({ setActivePage }) {
       {/* Warm Salon Interior Hero Section */}
       <section className="hero-wrapper">
         <div className="hero-bg">
-          <img src="/images/hero.jpg" alt="Højby Salon Interiør Stemning" />
+          <img src={heroImg} alt="Højby Salon Interiør Stemning" />
         </div>
         <div className="hero-overlay"></div>
 
@@ -162,7 +165,7 @@ export default function Home({ setActivePage }) {
 
             <div>
               <img 
-                src="/images/interior.jpg" 
+                src={interiorImg} 
                 alt="Højby Salon Interiør på Svendborgvej 321" 
                 style={{ width: '100%', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-md)' }} 
               />
